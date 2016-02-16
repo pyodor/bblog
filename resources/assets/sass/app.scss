@@ -1,2 +1,6 @@
 // @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+@import 'clean-blog';
 
+.dropdown-menu li a {
+  color: #555;
+}
