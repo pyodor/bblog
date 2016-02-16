@@ -23,4 +23,20 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+    * Get all user blogs or posts.
+    */
+   public function blogs()
+   {
+       return $this->hasMany(Blog::class);
+   }
+
+   /**
+   * Get all user comments.
+   */
+  public function comments()
+  {
+      return $this->hasMany(Comment::class);
+  }
 }
