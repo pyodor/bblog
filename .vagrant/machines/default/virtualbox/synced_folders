@@ -1,0 +1,1 @@
+{"virtualbox":{"/home/vagrant/bblog":{"type":null,"mount_options":[],"guestpath":"/home/vagrant/bblog","hostpath":"/Users/dcampo/Code/php/homestead/bblog","disabled":false},"/vagrant":{"guestpath":"/vagrant","hostpath":"/Users/dcampo/Code/php/homestead/bblog","disabled":false}}}
