@@ -25,7 +25,12 @@
 Route::group(['middleware' => ['web']], function () {
     Route::get('/', 'BlogController@index');
     Route::resource('blog', '\App\Http\Controllers\BlogController');
-    //Route::resource('comment', '\App\Http\Controllers\CommentController');
     Route::post('comment/blog/{blog}', 'CommentController@store')->name('comment.store');
     Route::auth();
+});
+
+Route::group(array('prefix' => 'api/v1'), function() {
+    Route::resource('authenticate', '\App\Http\Controllers\Api\V1\AuthenticateController', ['only' => ['index']]);
+    Route::post('authenticate', '\App\Http\Controllers\Api\V1\AuthenticateController@authenticate');
+    Route::resource('blog', '\App\Http\Controllers\Api\V1\BlogController');
 });
