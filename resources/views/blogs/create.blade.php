@@ -4,6 +4,7 @@
 
     <div class="container">
         @include('common.errors')
+
         <div class="well">
             <h4>Create a Post:</h4>
             <form action="{{ url('blog') }}" method="POST" class="form-horizontal">
