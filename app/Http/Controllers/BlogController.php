@@ -22,8 +22,7 @@ class BlogController extends Controller
 
     public function index(Request $request)
     {
-        $blogs = $request->user() ? $this->blogs->forUser($request->user())
-                                  : $this->blogs->all();
+        $blogs = $this->blogs->all();
 
         return view('blogs.index', [
             'blogs' => $blogs
@@ -38,11 +37,11 @@ class BlogController extends Controller
     public function show(Request $request, $id)
     {
         $blog = $this->blogs->find($id);
-
-        //var_dump($blog);
+        $comments = $blog->comments()->orderBy('created_at', 'desc')->get();
 
         return view('blogs.show', [
-            'blog' => $blog
+            'blog' => $blog,
+            'comments' => $comments
         ]);
     }
 
@@ -58,6 +57,6 @@ class BlogController extends Controller
             'content' => $request->content,
         ]);
 
-        return redirect('/');
+        return redirect('/')->with('message', 'Post successfully saved!');
     }
 }

@@ -23,11 +23,11 @@ class BlogRepository
 
     public function all()
     {
-        return Blog::all();
+        return Blog::orderBy('created_at', 'desc')->get();
     }
 
     public function find($id)
     {
-        return Blog::where('id', $id);
+        return Blog::find($id);
     }
 }

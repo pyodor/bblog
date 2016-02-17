@@ -25,5 +25,7 @@
 Route::group(['middleware' => ['web']], function () {
     Route::get('/', 'BlogController@index');
     Route::resource('blog', '\App\Http\Controllers\BlogController');
+    //Route::resource('comment', '\App\Http\Controllers\CommentController');
+    Route::post('comment/blog/{blog}', 'CommentController@store')->name('comment.store');
     Route::auth();
 });

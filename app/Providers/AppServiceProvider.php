@@ -13,7 +13,17 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        app('view')->composer('layouts.app', function ($view) {
+            $action = app('request')->route()->getAction();
+
+            $controller = class_basename($action['controller']);
+
+            list($controller, $action) = explode('@', $controller);
+
+            $blog_show = $controller == 'BlogController' && $action == 'show';
+        
+            $view->with(compact('controller', 'action', 'blog_show'));
+        });
     }
 
     /**

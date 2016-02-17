@@ -43,6 +43,7 @@
 
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <ul class="nav navbar-nav navbar-left">
+                    <li><a href="{{ url('/') }}">Home</a></li>
                     @if (!Auth::guest())
                         <li><a href="{{ url('/blog/create') }}">Create New Blog</a></li>
                     @endif
@@ -69,20 +70,9 @@
         </div>
     </nav>
 
-    <!-- Set your background image for this header on the line below. -->
-    <header class="intro-header" style="background-image: url({{ URL::asset('img/home-bg.jpg') }})">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                    <div class="site-heading">
-                        <h1>Blog</h1>
-                        <hr class="small">
-                        <span class="subheading">BB</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
+    @if (!$blog_show)
+        @include('blogs.index.header')
+    @endif
 
     @yield('content')
 
@@ -117,7 +107,7 @@
                             </a>
                         </li>
                     </ul>
-                    <p class="copyright text-muted">Copyright &copy; Bibo Blog 2016</p>
+                    <p class="copyright text-muted">Copyright &copy; Bibo Global Opportunity, Inc. 2016</p>
                 </div>
             </div>
         </div>
