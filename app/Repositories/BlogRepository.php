@@ -28,6 +28,6 @@ class BlogRepository
 
     public function find($id)
     {
-        return Blog::find($id);
+        return Blog::findOrFail($id);
     }
 }

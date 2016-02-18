@@ -59,4 +59,34 @@ class BlogController extends Controller
 
         return redirect('/')->with('message', 'Post successfully saved!');
     }
+
+    public function edit($id)
+    {
+        $blog = $this->blogs->find($id);
+
+        return view('blogs.edit')->withBlog($blog);
+    }
+
+    public function update($id, Request $request)
+    {
+        $blog = $this->blogs->find($id);
+
+        $this->validate($request, [
+            'title' => 'required|max:255',
+            'content' => 'required'
+        ]);
+
+        $input = $request->all();
+
+        $blog->fill($input)->save();
+
+        return redirect('/')->with('message', 'Post successfully updated!');;
+    }
+    
+    public function destroy($id)
+    {
+        if($this->blogs->find($id)->delete()) {
+            return redirect('/')->with('message', 'Post successfully deleted!');
+        }
+    }
 }

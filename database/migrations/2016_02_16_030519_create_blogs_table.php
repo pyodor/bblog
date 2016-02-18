@@ -18,6 +18,7 @@ class CreateBlogsTable extends Migration
             $table->string('slug')->default('');
             $table->text('content');
             $table->integer('user_id')->index();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

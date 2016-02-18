@@ -55,4 +55,20 @@ class ApiTest extends TestCase
                  'blogs'
               ]);
     }
+
+    // public function testCanGetTokenViaCredentials()
+    // {
+    //     $user = factory(App\User::class)->create([
+    //         'email' => 'csicebu@gmail.com',
+    //         'password' => 'mypassword'
+    //     ]);
+    //
+    //     $this->json('POST', "/api/v1/authenticate", [
+    //             'email' => $user->email,
+    //             'password' => $user->password
+    //         ])
+    //         ->seeJsonStructure([
+    //              'token'
+    //           ]);
+    // }
 }

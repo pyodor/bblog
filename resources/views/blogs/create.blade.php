@@ -7,22 +7,12 @@
 
         <div class="well">
             <h4>Create a Post:</h4>
-            <form action="{{ url('blog') }}" method="POST" class="form-horizontal">
-                {!! csrf_field() !!}
+            {!! Form::open([
+                'route' => 'blog.store',
+                'class' =>'form-horizontal'
+            ]) !!}
 
-                <div class="form-group">
-                    <label for="blog-title" class="col-sm-1 control-label">Title</label>
-                    <div class="col-sm-11">
-                        <input type="text" name="title" id="blog-title" class="form-control">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="blog-content" class="col-sm-1 control-label">Content</label>
-                    <div class="col-sm-11">
-                        <textarea rows="8" name="content" id="blog-content" class="form-control textarea"></textarea>
-                    </div>
-                </div>
+                @include('blogs.common.form-fields')
 
                 <div class="form-group">
                     <div class="col-sm-offset-1 col-sm-1">
@@ -31,7 +21,7 @@
                         </button>
                     </div>
                 </div>
-            </form>
+            {!! Form::close() !!}
         </div>
     </div>
 
